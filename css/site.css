@@ -1,0 +1,27 @@
+.active{
+    background-color: blue;
+    color:white;
+}
+
+body{
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    background: #7E8D85;
+    font-family: 'Roboto Slab', serif;
+    line-height: 1.4;
+}
+
+#coindesk{
+    margin-top: 20px;
+    width: 300px;
+    padding: 0 40px 40px;
+    background: #2F242C;
+    border-radius: 5px;
+    color: #B3BFB8;
+}
+
+.lighten, h1{
+    color: white;
+}

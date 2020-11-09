@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRI Vue Basics</title>
+    <script src="js/vue.js"></script>
+    <link rel="stylesheet" href="css/site.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Text interpolation -->
+        <h1>{{pageTitle}}</h1>
+
+        <!-- Raw HTML -->
+        <h2>Raw HTML</h2>
+        <p>Using mustaches: {{rawHtml}}</p>
+        <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+        
+        <!-- Binding element attributes -->
+        <h2>Binding element attributes</h2>
+        <p v-bind:title="hoverText">Hover over me!</p>
+
+        <!-- Conditionals -->
+        <div v-bind:class="{active: canYouSeeMe}">
+            <h2>Conditionals</h2>
+            <div v-if="canYouSeeMe">
+                <p> Now you can see me!</p>
+            </div>
+            <div v-else>
+                <p>I will show if <b>canYouSeeMe</b> is false</p>
+            </div>
+            <div>
+                <button v-on:click="toggleCanYouSeeMe">Toggle</button>
+            </div>
+        </div>
+
+        <!-- Loops -->
+        <div>
+            <h2>Loops</h2>
+            <ol>
+                <li v-for="person in people">
+                    {{person.name}} lives in {{person.city}}
+                </li>
+            </ol>
+            <h3>Loops with index</h3>
+            <ol>
+                <li v-for="(person,index) in people">
+                    {{person.name}} lives in {{person.city}} (Indexnr: {{index}})
+                </li>
+            </ol>
+            <button v-on:click="showPersonForm(true)">Show person form</button>
+            <form v-if="showNewPersonForm" v-on:submit.prevent="addNewPerson(newPerson)">
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" v-model="newPerson.name" />
+                </div>
+                <div>
+                    <label for="city">City</label>
+                    <input type="text" id="city" v-model="newPerson.city" />
+                </div>
+                <div>
+                    <input type="submit" value="Add new person"/>
+                    <button v-on:click="showPersonForm(false)">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Two way binding -->
+        <div>
+            <h2>Two way binding</h2>
+            <p>{{twoWayBindingMessage}}</p>
+            <input v-model="twoWayBindingMessage">
+        </div>
+
+        <!-- Event Handling -->
+        <div>
+            <h2>Listening to events</h2>
+            <button v-on:click="counter += 1">Add 1</button>
+            <p>You've clicked the button {{counter}} times</p>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
